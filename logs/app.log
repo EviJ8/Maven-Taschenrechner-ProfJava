@@ -1,4 +1,0 @@
-[2025-01-20T17:08:31,562] [main] ERROR com.mycompany.utils.Calculator - Fehler: Division durch Null ist nicht erlaubt.
-
-[2025-01-20T17:08:31,571] [main] ERROR com.mycompany.utils.Calculator - Fehler: Modulo durch Null ist nicht erlaubt.
-
