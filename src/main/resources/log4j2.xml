@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <!-- Define Appenders -->
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{ISO8601}] [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <!-- File Appender -->
+        <File name="File" fileName="logs/app.log" append="true">
+            <PatternLayout pattern="[%d{ISO8601}] [%t] %-5level %logger{36} - %msg%n" />
+        </File>
+
+        <!-- Rolling File Appender -->
+        <RollingFile name="RollingFile" fileName="logs/app-rolling.log" filePattern="logs/app-rolling-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="[%d{ISO8601}] [%t] %-5level %logger{36} - %msg%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <!-- Define Loggers -->
+    <Loggers>
+        <!-- Root Logger -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="File" />
+        </Root>
+
+        <!-- Custom Logger for a specific package -->
+        <Logger name="com.example.myapp" level="debug" additivity="false">
+            <AppenderRef ref="RollingFile" />
+        </Logger>
+    </Loggers>
+
+</Configuration>
